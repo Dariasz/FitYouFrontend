@@ -10,10 +10,19 @@
             <div class="navbar">
                <span class="nav-brand-name">FitYou</span>
             </div>
-            <h1>Write your new exercise</h1>
-            <input v-model="newExercise">
-            
-            <h1>Your new exercise is: {{ newExercise }}</h1>
+
+            <h1>Your new exercise: {{ newExercise }}</h1>
+            <input class="exercise-input" v-model="newExercise">
+            <button v-on:click="addExercise">Add Exercise</button>
+
+            <h1>Your exercise list</h1>
+            <div class="exercise-list">
+                <ol>
+                    <li v-for="exercise in exerciseList">
+                       <h3>{{ exercise.name }}</h3> 
+                    </li>
+                </ol>
+            </div>
         </div>
         
         <script src="main.js"></script>

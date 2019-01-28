@@ -1,6 +1,13 @@
 var app = new Vue({
     el: '#app',
     data: {
-      newExercise: 'a'
+      newExercise: '',
+      exerciseList: []
+    },
+    methods: {
+      addExercise() {
+        this.exerciseList.push({name: this.newExercise});
+        this.newExercise = ''
+      }
     }
   })
