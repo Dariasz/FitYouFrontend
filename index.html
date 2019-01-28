@@ -17,11 +17,14 @@
 
             <h1>Your exercise list</h1>
             <div class="exercise-list">
-                <ol>
-                    <li v-for="exercise in exerciseList">
-                       <h3>{{ exercise.name }}</h3> 
+                <ul>
+                    <li v-for="exercise in exerciseList" v-bind:key="exercise.id">
+                        <span class="exercise-list-element">
+                            {{ exercise.id + 1 }}. {{ exercise.name }}
+                            <button v-on:click="updateExercise(exercise.id)">Update</button>
+                        </span>
                     </li>
-                </ol>
+                </ul>
             </div>
         </div>
         
