@@ -1,0 +1,14 @@
+html, body {
+   margin: 0;
+}
+
+.navbar {
+   display: flex;
+   background-color: lightblue;
+   height: 50px;
+}
+
+.nav-brand-name {
+   margin-left: 5%;
+   font-size: 30px;
+}
