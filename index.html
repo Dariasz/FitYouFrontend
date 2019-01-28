@@ -10,8 +10,10 @@
             <div class="navbar">
                <span class="nav-brand-name">FitYou</span>
             </div>
-
-            <h1>{{ greet }}</h1>
+            <h1>Write your new exercise</h1>
+            <input v-model="newExercise">
+            
+            <h1>Your new exercise is: {{ newExercise }}</h1>
         </div>
         
         <script src="main.js"></script>
