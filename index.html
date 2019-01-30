@@ -21,7 +21,11 @@
                     <li v-for="exercise in exerciseList" v-bind:key="exercise.id">
                         <span class="exercise-list-element">
                             {{ exercise.id + 1 }}. {{ exercise.name }}
-                            <button v-on:click="updateExercise(exercise.id)">Update</button>
+                            <button v-on:click="showExerciseEdit">Update</button>
+                            <input v-if="exerciseEditInput" v-model="exerciseEdited">
+                            <button v-if="exerciseEditInput" v-on:click="updateExercise(exercise.id)">
+                                Done
+                            </button>
                         </span>
                     </li>
                 </ul>

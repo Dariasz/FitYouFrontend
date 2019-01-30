@@ -2,8 +2,11 @@ var app = new Vue({
     el: '#app',
     data: {
       newExercise: '',
-      exerciseList: []
+      exerciseList: [],
+      exerciseEditInput: false,
+      exerciseEdited: ''
     },
+
     methods: {
       addExercise() {
         this.exerciseList.push({id: this.setId(), name: this.newExercise});
@@ -11,7 +14,12 @@ var app = new Vue({
       },
 
       updateExercise(id) {
-        this.exerciseList[id].name = 'updated';
+        this.exerciseList[id].name = this.exerciseEdited;
+        this.exerciseEditInput = false;
+      },
+
+      showExerciseEdit() {
+        this.exerciseEditInput = true;
       },
 
       setId() {
