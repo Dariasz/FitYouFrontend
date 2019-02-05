@@ -22,6 +22,7 @@
                         <span class="exercise-list-element">
                             {{ exercise.id + 1 }}. {{ exercise.name }}
                             <button v-on:click="showExerciseEdit">Update</button>
+                            <button v-on:click="deleteExercise(exercise.id)">Delete</button>
                             <input v-if="exerciseEditInput" v-model="exerciseEdited">
                             <button v-if="exerciseEditInput" v-on:click="updateExercise(exercise.id)">
                                 Done

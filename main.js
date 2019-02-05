@@ -14,8 +14,15 @@ var app = new Vue({
       },
 
       updateExercise(id) {
+        console.log(id);
+        console.log(this.exerciseList[id])
         this.exerciseList[id].name = this.exerciseEdited;
         this.exerciseEditInput = false;
+      },
+
+      deleteExercise(id) {
+        let list = this.exerciseList;
+        list.splice(list.indexOf(list[id]), 1, "");
       },
 
       showExerciseEdit() {
