@@ -1,31 +1,48 @@
+
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-toolbar app color="blue" class="navbar" :light="true">
+
+      <v-toolbar-title>
+         <span class="brandName">FitYou</span>
+      </v-toolbar-title>
+      
+      <v-toolbar-items class="hidden-sm-and-down">
+         <router-link to="/dashboard"><v-btn flat color="white">Dashboard</v-btn></router-link>
+      </v-toolbar-items>
+  </v-toolbar>
+
+    <v-content>
+       <router-view></router-view>
+    </v-content>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+<script>
+//import HelloWorld from './components/HelloWorld'
+import Test from './components/Test'
+import Dashboard from './views/Dashboard'
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+export default {
+  name: 'App',
+  components: {
+    Test, Dashboard
+  },
+  data () {
+    return {
+      //
+    }
+  }
 }
+</script>
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+<style scoped>
+   .brandName {
+      color: white;
+   }
+   .navbar {
+      background-image: url('https://img3.akspic.com/image/113502-magenta-pattern-square-purple-symmetry-2560x1440.jpg')
+   }
 </style>
+
+
