@@ -19,14 +19,12 @@
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld'
-import Test from './components/Test'
 import Dashboard from './views/Dashboard'
 
 export default {
   name: 'App',
   components: {
-    Test, Dashboard
+    
   },
   data () {
     return {

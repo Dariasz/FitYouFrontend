@@ -56,14 +56,14 @@ export default {
       addExercise() {
          let list = this.exerciseList;
 
-      if(this.newExercise.trim() !== '') {
-         if(list.length === 0) {
-            list.push({id: 0, name: this.newExercise, editing: false});
-         } else {
-            list.push({id: this.setId(), name: this.newExercise, editing: false});
+         if(this.newExercise.trim() !== '') {
+            if(list.length === 0) {
+               list.push({id: 0, name: this.newExercise, editing: false});
+            } else {
+               list.push({id: this.setId(), name: this.newExercise, editing: false});
+            }
          }
-      }
-        this.newExercise = ''
+         this.newExercise = ''
       },
 
       deleteExercise(index) {
@@ -87,7 +87,7 @@ export default {
 </script>
 
 <style scoped>
-
+   
 </style>
 
 

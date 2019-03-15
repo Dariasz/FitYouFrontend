@@ -1,21 +1,3 @@
-<!--
 <template>
-<div>
-  <HelloWorld />
-  <Test />
-</div>
-  
+   <h1>Home Page</h1>
 </template>
-
-<script>
-  import HelloWorld from '../components/HelloWorld'
-  import Test from '../components/Test'
-
-  export default {
-    components: {
-      HelloWorld,
-      Test
-    }
-  }
-</script>
--->
