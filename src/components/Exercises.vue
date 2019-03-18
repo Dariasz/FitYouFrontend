@@ -27,41 +27,42 @@
       </v-layout>
       </v-card>
 
-      
-
       <h1>Your exercise list: </h1>
 
-      <div v-for="(exercise, index) in exerciseList" v-bind:key="exercise.id">
+      <span v-for="(exercise, index) in exerciseList" v-bind:key="exercise.id">
          <v-card v-if="exercise">
 
             <v-card-title primary-title>
-               <h3 class="headline mb-0" v-if="!exercise.editing">{{exercise.name}}</h3>
-               <v-layout column justify-end align-end>
-                 <v-flex xs12 sm6 md3>
-                <h4 v-if="exercise.quantity">Quantity: {{exercise.quantity}}</h4>
-                <h4 v-if="exercise.rating">Rating: {{exercise.rating}}</h4>
-                 </v-flex>
+               <h3 class="headline mb-0" @click="showExerciseEdit(index)">{{exercise.name}}</h3>
+               <v-layout column justify-end align-end v-if="!exercise.editing">
+                  <h4 v-if="exercise.quantity">Quantity: {{exercise.quantity}}</h4>
+                  <h4 v-if="exercise.rating">Rating: {{exercise.rating}}</h4>
                </v-layout>
-               <span v-if="exercise.editing">
-                  <v-text-field v-model="exercise.name" @keyup.enter="hideExerciseEdit(index)"
-                     append-icon="done" 
-                     @click:append="hideExerciseEdit(index)"
-                     label="New exercise name"
-                     outline
-                  ></v-text-field>
-               </span>
-            </v-card-title>
+                <v-layout row wrap v-if="exercise.editing" class="edit-inputs">
 
-            <v-card-actions>
-               <v-btn flat color="blue" @click="showExerciseEdit(index)">
-                  Update
-               </v-btn>
-               <v-btn flat color="red" @click="deleteExercise(index)">
-                  Delete
-               </v-btn>
-            </v-card-actions>
+                  <v-flex xs12 sm6 md3>
+                    <v-text-field
+                      v-model="exercise.quantity"
+                      label="Quantity"
+                      solo
+                    ></v-text-field>
+                  </v-flex>
+
+                  <v-flex xs12 sm6 md3>
+                    <v-text-field
+                      v-model="exercise.rating"
+                      label="Rating"
+                      solo
+                    ></v-text-field>
+                  </v-flex>
+                </v-layout>
+                <v-layout row wrap align-center justify-end v-if="exercise.editing">
+                  <v-icon medium @click="hideExerciseEdit(index)">done</v-icon>
+                  <v-icon medium @click="deleteExercise(index)">delete</v-icon>
+                </v-layout>
+            </v-card-title>
          </v-card>
-      </div>
+      </span>
    </v-container>
 </template>
 
@@ -74,7 +75,7 @@ export default {
           quantity: '',
           rating: ''
         },
-        exerciseEdited: '',
+
         exerciseList: [],
         availableExercises: [
           'Push-ups', 'Pull-ups', 'Squats', 'Lifting'
@@ -102,6 +103,7 @@ export default {
             }
          }
          this.newExercise = ''
+         this.exerciseProps = { quantity: '', rating: '' }
       },
 
       deleteExercise(index) {
@@ -129,7 +131,11 @@ export default {
 </script>
 
 <style scoped>
-   
+  .edit-inputs {
+    display: inline-flex;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
 </style>
 
 
