@@ -2,7 +2,7 @@
    <v-container>
       <v-card>
         <v-card-text>
-          <v-subheader class="pa-0">Pick your exercise</v-subheader>
+          <v-subheader class="pa-0">Pick new exercise</v-subheader>
           <v-autocomplete
             v-model="newExercise"
             :items="availableExercises"
@@ -10,24 +10,30 @@
           </v-autocomplete>
         </v-card-text>
 
-        <v-layout row justify-center align-center v-if="exerciseExists(newExercise)">
-         <v-text-field
-            v-model="exerciseProps.quantity"
-            label="Quantity"
-            outline
-         >
-         </v-text-field>
-         <v-text-field
-            v-model="exerciseProps.rating"
-            label="Rating"
-            outline
-         >
-         </v-text-field>
-          <v-btn color="info" @click="addExercise">Done</v-btn>
+        <v-layout row align-center v-if="exerciseExists(newExercise)">
+          <v-flex xs12 sm6 md3>
+            <v-text-field
+                v-model="exerciseProps.quantity"
+                label="Quantity"
+                solo
+            >
+            </v-text-field>
+          </v-flex>
+
+          <v-flex xs12 sm6 md3>
+            <v-text-field
+                v-model="exerciseProps.rating"
+                label="Rating"
+                solo
+            >
+            </v-text-field>
+          </v-flex>
+          <v-layout justify-end>
+            <v-icon large @click="addExercise">done_outline</v-icon>
+          </v-layout>
       </v-layout>
       </v-card>
-
-      <h1>Your exercise list: </h1>
+      <br />
 
       <span v-for="(exercise, index) in exerciseList" v-bind:key="exercise.id">
          <v-card v-if="exercise">
