@@ -19,12 +19,11 @@
 </template>
 
 <script>
-import Dashboard from './views/Dashboard'
 
 export default {
   name: 'App',
   components: {
-    
+    //
   },
   data () {
     return {

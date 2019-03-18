@@ -1,6 +1,8 @@
 <template>
    <div id="dashboard">
-      <h1> to ja daszbord </h1>
+     <v-layout justify-center>
+       <h1>FitYou Dashboard</h1>
+     </v-layout>
       <Exercises />
    </div>
 </template>

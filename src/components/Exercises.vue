@@ -1,16 +1,33 @@
 <template>
    <v-container>
-      <v-flex xs12 sm6 md3>
-         <v-text-field
+      <v-card>
+        <v-card-text>
+          <v-subheader class="pa-0">Pick your exercise</v-subheader>
+          <v-autocomplete
             v-model="newExercise"
-            append-icon="done" 
-            @click:append="addExercise"
-            @keyup.enter="addExercise"
-            label="Exercise name"
+            :items="availableExercises"
+          >
+          </v-autocomplete>
+        </v-card-text>
+
+        <v-layout row justify-center align-center v-if="exerciseExists(newExercise)">
+         <v-text-field
+            v-model="exerciseProps.quantity"
+            label="Quantity"
             outline
          >
          </v-text-field>
-      </v-flex>
+         <v-text-field
+            v-model="exerciseProps.rating"
+            label="Rating"
+            outline
+         >
+         </v-text-field>
+          <v-btn color="info" @click="addExercise">Done</v-btn>
+      </v-layout>
+      </v-card>
+
+      
 
       <h1>Your exercise list: </h1>
 
@@ -19,6 +36,12 @@
 
             <v-card-title primary-title>
                <h3 class="headline mb-0" v-if="!exercise.editing">{{exercise.name}}</h3>
+               <v-layout column justify-end align-end>
+                 <v-flex xs12 sm6 md3>
+                <h4 v-if="exercise.quantity">Quantity: {{exercise.quantity}}</h4>
+                <h4 v-if="exercise.rating">Rating: {{exercise.rating}}</h4>
+                 </v-flex>
+               </v-layout>
                <span v-if="exercise.editing">
                   <v-text-field v-model="exercise.name" @keyup.enter="hideExerciseEdit(index)"
                      append-icon="done" 
@@ -46,9 +69,16 @@
 export default {
     data() {
       return {
-         newExercise: '',
-         exerciseEdited: '',
-         exerciseList: []
+        newExercise: '',
+        exerciseProps: {
+          quantity: '',
+          rating: ''
+        },
+        exerciseEdited: '',
+        exerciseList: [],
+        availableExercises: [
+          'Push-ups', 'Pull-ups', 'Squats', 'Lifting'
+        ]
       }
     },
 
@@ -58,9 +88,17 @@ export default {
 
          if(this.newExercise.trim() !== '') {
             if(list.length === 0) {
-               list.push({id: 0, name: this.newExercise, editing: false});
+               list.push({id: 0,
+                          name: this.newExercise,
+                          editing: false,
+                          quantity: this.exerciseProps.quantity,
+                          rating: this.exerciseProps.rating });
             } else {
-               list.push({id: this.setId(), name: this.newExercise, editing: false});
+               list.push({id: this.setId(),
+                          name: this.newExercise,
+                          editing: false,
+                          quantity: this.exerciseProps.quantity,
+                          rating: this.exerciseProps.rating });
             }
          }
          this.newExercise = ''
@@ -81,6 +119,10 @@ export default {
 
       setId() {
          return this.exerciseList[this.exerciseList.length - 1].id + 1;
+      },
+
+      exerciseExists(item) {
+        return this.availableExercises.includes(item);
       }
     }
 }
