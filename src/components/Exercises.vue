@@ -101,21 +101,21 @@ export default {
                     rating: this.exerciseProps.rating });
         }
       }
-        this.newExercise = ''
-        this.exerciseProps = { quantity: '', rating: '' }
+      this.newExercise = ''
+      this.exerciseProps = { quantity: '', rating: '' }
     },
     deleteExercise(index) {
-        let list = this.exerciseList;
-        list.splice(index, 1, '');
+      let list = this.exerciseList;
+      list.splice(index, 1, '');
     },
     showExerciseEdit(index) {
-        this.exerciseList[index].editing = true;
+      this.exerciseList[index].editing = true;
     },
     hideExerciseEdit(index) {
-        this.exerciseList[index].editing = false;
+      this.exerciseList[index].editing = false;
     },
     setId() {
-        return this.exerciseList[this.exerciseList.length - 1].id + 1;
+      return this.exerciseList[this.exerciseList.length - 1].id + 1;
     },
     exerciseExists(item) {
       return this.availableExercises.includes(item);
