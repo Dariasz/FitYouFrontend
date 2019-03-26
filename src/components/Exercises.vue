@@ -33,6 +33,11 @@
             <v-icon @click="addExercise" large  color="green">done</v-icon>
           </v-layout>
         </v-card-title>
+        <span v-if="newSeriesArray">
+          <div v-for="(series, index) in newSeriesArray" v-bind:key="series.id">
+            <h2>Series {{index + 1}}. Repetitions: {{series.repetitions}} Weight: {{series.weight}}</h2>
+          </div>
+        </span>
       </v-card>
     </v-card>
     <br />
@@ -82,6 +87,7 @@ export default {
     return {
       newExercise: '',
       newSeries: {
+        id: null,
         repetitions: '',
         weight: '',
         time: Date.now()
@@ -143,8 +149,16 @@ export default {
       return this.availableExercises.includes(item);
     },
     addSeries() {
-      this.newSeriesArray.push(this.newSeries);
+      let arr = this.newSeriesArray;
+      if(arr.length === 0) {
+        this.newSeries.id = 0;
+      } else {
+        this.newSeries.id = this.setSeriesId();
+      }
+      arr.push(this.newSeries);
+
       this.newSeries = {
+        id: null,
         repetitions: '',
         weight: '',
         time: Date.now()
