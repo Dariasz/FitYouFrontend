@@ -11,7 +11,7 @@
 
       <v-card v-if="newExercise">
         <v-card-title>
-          <h1>Series</h1>
+          <h2>Add series</h2>
           <v-layout row justify-center>
             <v-flex xs12 sm6 md3>
               <v-text-field
@@ -33,11 +33,25 @@
             <v-icon @click="addExercise" large  color="green">done</v-icon>
           </v-layout>
         </v-card-title>
-        <span v-if="newSeriesArray">
-          <div v-for="(series, index) in newSeriesArray" v-bind:key="series.id">
-            <h2>Series {{index + 1}}. Repetitions: {{series.repetitions}} Weight: {{series.weight}}</h2>
-          </div>
-        </span>
+
+        <v-layout column v-if="newSeriesArray">
+          <v-card>
+            <v-list three-line>
+              <div v-for="(series, index) in newSeriesArray" v-bind:key="series.id">
+                
+                <v-list-tile>
+                  <v-subheader>Series {{index + 1}}</v-subheader>
+
+                  <v-list-tile-content row>
+                    <v-list-tile-title>Repetitions: {{series.repetitions}}</v-list-tile-title>
+                    <v-list-tile-title>Weight: {{series.weight}}</v-list-tile-title>
+                  </v-list-tile-content>
+                </v-list-tile>
+              </div>
+            </v-list>
+          </v-card>
+      </v-layout>
+
       </v-card>
     </v-card>
     <br />
