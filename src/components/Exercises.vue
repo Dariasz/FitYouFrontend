@@ -150,11 +150,9 @@ export default {
     },
     addSeries() {
       let arr = this.newSeriesArray;
-      if(arr.length === 0) {
-        this.newSeries.id = 0;
-      } else {
-        this.newSeries.id = this.setSeriesId();
-      }
+      let id = this.newSeries.id;
+
+      arr.length === 0 ? id = 0 : id = this.setSeriesId();
       arr.push(this.newSeries);
 
       this.newSeries = {
