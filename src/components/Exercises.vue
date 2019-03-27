@@ -50,8 +50,7 @@
               </div>
             </v-list>
           </v-card>
-      </v-layout>
-
+        </v-layout>
       </v-card>
     </v-card>
     <br />
@@ -59,32 +58,33 @@
     <span v-for="(exercise, index) in exerciseList" v-bind:key="exercise.id">
       <v-card v-if="exercise">
         <v-card-title primary-title>
-          <span v-for="(series, idx) in exercise.series" v-bind:key="series.repetitions">
-          <v-card>
-            {{idx}} {{series.repetitions}} {{series.weight}} {{series.time}}
-          </v-card>
-          </span>
           <h3 class="headline mb-0" @click="showExerciseEdit(index)">{{exercise.name}}</h3>
-          <v-layout column justify-end align-end v-if="!exercise.editing">
-            <h4 v-if="exercise.quantity">Quantity: {{exercise.quantity}}</h4>
-            <h4 v-if="exercise.rating">Rating: {{exercise.rating}}</h4>
+            <span v-for="(series, idx) in exercise.series" v-bind:key="series.id">
+          <v-layout row justify-center align-center v-if="!exercise.editing">
+              <v-card>
+                <h4> {{idx + 1}}. 
+                <span v-if="series.repetitions">Repetitions: {{series.repetitions}}</span>
+                <span v-if="series.weight">Weight: {{series.weight}}</span>
+                </h4>
+              </v-card>
           </v-layout>
           <v-layout row wrap v-if="exercise.editing" class="edit-inputs">
             <v-flex xs12 sm6 md3>
               <v-text-field
-                v-model="exercise.quantity"
-                label="Quantity"
+                v-model="series.repetitions"
+                label="Repetitions"
                 solo
               ></v-text-field>
             </v-flex>
             <v-flex xs12 sm6 md3>
               <v-text-field
-                v-model="exercise.rating"
-                label="Rating"
+                v-model="series.weight"
+                label="Weight"
                 solo
               ></v-text-field>
             </v-flex>
           </v-layout>
+            </span>
           <v-layout row wrap align-center justify-end v-if="exercise.editing">
             <v-icon medium @click="hideExerciseEdit(index)">done</v-icon>
             <v-icon medium @click="deleteExercise(index)">delete</v-icon>
