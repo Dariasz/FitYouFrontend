@@ -1,4 +1,5 @@
 export default {
   isAuthenticated: state => !!state.token.accessToken.length > 0,
-  authStatus: state => state.signedIn
+  authStatus: state => state.signedIn,
+  user: state => state.user
 }
