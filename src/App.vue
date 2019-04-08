@@ -1,14 +1,14 @@
 <template>
   <v-app>
-    <!--<v-toolbar app color="blue" class="navbar" :light="true">-->
-    <!--<v-toolbar-title>-->
-    <!--<span class="brandName">FitYou</span>-->
-    <!--</v-toolbar-title>-->
+    <v-toolbar app color="blue" class="navbar" :light="true">
+    <v-toolbar-title>
+    <span class="brandName">FitYou</span>
+    </v-toolbar-title>
 
-    <!--<v-toolbar-items class="hidden-sm-and-down">-->
-    <!--<router-link to="/dashboard"><v-btn flat color="white">Dashboard</v-btn></router-link>-->
-    <!--</v-toolbar-items>-->
-    <!--</v-toolbar>-->
+    <v-toolbar-items class="hidden-sm-and-down">
+    <router-link to="/dashboard"><v-btn flat color="white">Dashboard</v-btn></router-link>
+    </v-toolbar-items>
+    </v-toolbar>
 
     <v-content>
       <router-view></router-view>

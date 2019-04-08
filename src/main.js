@@ -5,11 +5,14 @@ import router from './router'
 import store from './store/index'
 import messages from './locales/index'
 
-import VeeValidate from 'vee-validate'
+import VeeValidate, { Validator } from 'vee-validate'
+import pl from 'vee-validate/dist/locale/pl'
+
 import VueI18n from 'vue-i18n'
 
 Vue.config.productionTip = false
 Vue.use(VeeValidate)
+Validator.localize('pl', pl)
 Vue.use(VueI18n)
 
 const i18n = new VueI18n({

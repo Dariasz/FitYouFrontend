@@ -8,6 +8,7 @@
           :error-messages="errors.collect('email')"
           :label="$t('auth.email')"
           data-vv-name="email"
+          :data-vv-as="$t('auth.email')"
           required
         ></v-text-field>
 
@@ -18,6 +19,7 @@
           :label="$t('auth.password')"
           type="password"
           data-vv-name="password"
+          :data-vv-as="$t('auth.password')"
           autocomplete="password"
           required>
         </v-text-field>
@@ -35,6 +37,8 @@
 </template>
 
 <script>
+  import { AUTH_REQUEST } from '../../store/modules/auth/action-types'
+
   export default {
     name: 'LoginForm',
     data: () => ({
@@ -44,8 +48,14 @@
 
     methods: {
       signIn () {
-        this.$validator.validateAll()
-        console.log('Sing in')
+        this.$validator.validateAll().then((result) => {
+          const { email, password } = this
+          if (!result) {
+            this.$store.dispatch(`auth/${AUTH_REQUEST}`, { email, password }).then(() => {
+              this.$router.push('/')
+            })
+          }
+        })
       }
     }
   }

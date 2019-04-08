@@ -3,6 +3,8 @@ import getters from './getters'
 import mutations from './mutations'
 
 const state = {
+  signedIn: false,
+  isLoading: false,
   token: {
     accessToken: '',
     client: '',
@@ -10,7 +12,6 @@ const state = {
   },
   user: {
     id: '',
-    signedIn: false,
     email: '',
     password: '',
     username: '',

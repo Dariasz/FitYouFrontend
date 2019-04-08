@@ -3,25 +3,45 @@ import Router from 'vue-router'
 import Home from './views/Home'
 import Dashboard from './views/Dashboard'
 import Auth from './views/Auth'
+import store from './store/index'
 
 Vue.use(Router)
+
+const ifNotAuthenticated = (to, from, next) => {
+  if (!store.getters['auth/isAuthenticated']) {
+    next()
+    return
+  }
+  next('/')
+}
+
+const ifAuthenticated = (to, from, next) => {
+  if (store.getters['auth/isAuthenticated']) {
+    next()
+    return
+  }
+  next('/login')
+}
 
 export default new Router({
   routes: [
     {
-      path: '/sign-in',
-      name: 'Auth',
-      component: Auth
-    },
-    {
       path: '/',
-      name: 'home',
-      component: Home
+      name: 'Home',
+      component: Home,
+      beforeEnter: ifAuthenticated
     },
     {
       path: '/dashboard',
-      name: 'dashboard',
-      component: Dashboard
-    }
+      name: 'Dashboard',
+      component: Dashboard,
+      beforeEnter: ifAuthenticated
+    },
+    {
+      path: '/login',
+      name: 'Auth',
+      component: Auth,
+      beforeEnter: ifNotAuthenticated
+    },
   ]
 })
