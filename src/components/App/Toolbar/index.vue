@@ -5,11 +5,9 @@
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
-      <!--<v-btn flat color="white">-->
-        <!--<router-link to="/" tag="div">-->
-          <!--{{$t('app.toolbar.dashboard')}}-->
-        <!--</router-link>-->
-      <!--</v-btn>-->
+      <v-btn flat color="white" to="/">
+        {{$t('app.toolbar.dashboard')}}
+      </v-btn>
       <user-options-list></user-options-list>
     </v-toolbar-items>
   </v-toolbar>

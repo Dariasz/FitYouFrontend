@@ -1,10 +1,5 @@
 <template>
-    <div id="dashboard">
-        <v-layout justify-center>
-            <h1>FitYou Dashboard</h1>
-        </v-layout>
-        <Exercises />
-    </div>
+  <Exercises />
 </template>
 
 <script>

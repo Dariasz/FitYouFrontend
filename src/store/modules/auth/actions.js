@@ -15,9 +15,8 @@ export default {
   },
 
   [AUTH_LOGOUT]: ({ commit }) => {
-    return new Promise((resolve, reject) => {
+    return new Promise(() => {
       commit(AUTH_LOGOUT)
-      resolve()
     })
   }
 }
