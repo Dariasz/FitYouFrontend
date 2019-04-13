@@ -1,23 +1,19 @@
 <template>
   <v-app>
-    <Toolbar v-if="isAuthenticated"></Toolbar>
-    <v-content>
+    <component :is="layout">
       <router-view></router-view>
-    </v-content>
+    </component>
   </v-app>
 </template>
 
 <script>
-  import Toolbar from './components/App/Toolbar'
-  import { mapGetters } from 'vuex'
+  const defaultLayout = 'default'
 
   export default {
-    name: 'App',
-    components: { Toolbar },
     computed: {
-      ...mapGetters({
-        isAuthenticated: 'auth/isAuthenticated'
-      }),
+      layout () {
+        return (this.$route.meta.layout || defaultLayout) + '-layout'
+      }
     }
   }
 </script>

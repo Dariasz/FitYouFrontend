@@ -10,10 +10,15 @@ import pl from 'vee-validate/dist/locale/pl'
 
 import VueI18n from 'vue-i18n'
 
+import DefaultLayout from './layouts/DefaultLayout'
+import NoToolbarLayout from './layouts/NoToolbarLayout'
+
 Vue.config.productionTip = false
 Vue.use(VeeValidate)
 Validator.localize('pl', pl)
 Vue.use(VueI18n)
+Vue.component('default-layout', DefaultLayout)
+Vue.component('no-toolbar-layout', NoToolbarLayout)
 
 const i18n = new VueI18n({
   locale: 'pl',

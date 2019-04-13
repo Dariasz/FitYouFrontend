@@ -35,6 +35,7 @@ export default new Router({
       path: '/login',
       name: 'Auth',
       component: Auth,
+      meta: { layout: 'no-toolbar' },
       beforeEnter: ifNotAuthenticated
     }
   ]
