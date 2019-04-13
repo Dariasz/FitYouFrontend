@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home'
 import Dashboard from './views/Dashboard'
 import Auth from './views/Auth'
 import store from './store/index'
@@ -24,15 +23,10 @@ const ifAuthenticated = (to, from, next) => {
 }
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home,
-      beforeEnter: ifAuthenticated
-    },
-    {
-      path: '/dashboard',
       name: 'Dashboard',
       component: Dashboard,
       beforeEnter: ifAuthenticated
@@ -42,6 +36,6 @@ export default new Router({
       name: 'Auth',
       component: Auth,
       beforeEnter: ifNotAuthenticated
-    },
+    }
   ]
 })

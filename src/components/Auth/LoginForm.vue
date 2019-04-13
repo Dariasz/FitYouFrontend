@@ -21,8 +21,8 @@
           data-vv-name="password"
           :data-vv-as="$t('auth.password')"
           autocomplete="password"
-          required>
-        </v-text-field>
+          required
+        ></v-text-field>
 
         <v-btn
           color="success"

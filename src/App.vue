@@ -1,15 +1,6 @@
 <template>
   <v-app>
-    <v-toolbar app color="blue" class="navbar" :light="true">
-    <v-toolbar-title>
-    <span class="brandName">FitYou</span>
-    </v-toolbar-title>
-
-    <v-toolbar-items class="hidden-sm-and-down">
-    <router-link to="/dashboard"><v-btn flat color="white">Dashboard</v-btn></router-link>
-    </v-toolbar-items>
-    </v-toolbar>
-
+    <Toolbar v-if="isAuthenticated"></Toolbar>
     <v-content>
       <router-view></router-view>
     </v-content>
@@ -17,28 +8,16 @@
 </template>
 
 <script>
+  import Toolbar from './components/App/Toolbar'
+  import { mapGetters } from 'vuex'
 
   export default {
     name: 'App',
-    components: {
-      //
-    },
-    data () {
-      return {
-        //
-      }
+    components: { Toolbar },
+    computed: {
+      ...mapGetters({
+        isAuthenticated: 'auth/isAuthenticated'
+      }),
     }
   }
 </script>
-
-<style scoped>
-  .brandName {
-    color: white;
-  }
-
-  .navbar {
-    background-image: url('https://img3.akspic.com/image/113502-magenta-pattern-square-purple-symmetry-2560x1440.jpg')
-  }
-</style>
-
-
