@@ -6,7 +6,7 @@ export default {
     return new Promise((resolve, reject) => {
       commit(AUTH_REQUEST)
       api.post('api/auth/sign_in', {
-        email: 'user-1@example.com', password: 'em12345678'
+        email: email, password: password
       }).then((response) => {
         commit(AUTH_SUCCESS, response)
         resolve(response)
@@ -15,8 +15,9 @@ export default {
   },
 
   [AUTH_LOGOUT]: ({ commit }) => {
-    return new Promise(() => {
+    return new Promise((resolve) => {
       commit(AUTH_LOGOUT)
+      resolve()
     })
   }
 }

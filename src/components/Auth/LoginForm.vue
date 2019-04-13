@@ -50,7 +50,7 @@
       signIn () {
         this.$validator.validateAll().then((result) => {
           const { email, password } = this
-          if (!result) {
+          if (result) {
             this.$store.dispatch(`auth/${AUTH_REQUEST}`, { email, password }).then(() => {
               this.$router.push('/')
             })
