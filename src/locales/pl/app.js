@@ -2,6 +2,7 @@ export default {
   toolbar: {
     dashboard: 'Dashboard',
     logout: 'Wyloguj się',
-    appName: 'FitYou'
+    appName: 'FitYou',
+    blog: 'Blog'
   }
 }
