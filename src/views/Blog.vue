@@ -1,5 +1,7 @@
 <template>
-  <BlogList></BlogList>
+  <v-flex xs12 sm8>
+    <blogList />
+  </v-flex>
 </template>
 
 <script>

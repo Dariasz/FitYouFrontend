@@ -1,9 +1,9 @@
 <template>
-  <v-container grid-list-md>
+  <v-container grid-list-xl>
     <v-layout row wrap>
-      <v-flex xs6 v-for="card in cards" :key="card.title">
+      <v-flex xs12 sm6 v-for="card in cards" :key="card.title">
         <v-card hover>
-          <v-img src="https://cdn.vuetifyjs.com/images/cards/desert.jpg" aspect-ratio="1.75"></v-img>
+          <v-img src="https://cdn.vuetifyjs.com/images/cards/desert.jpg" aspect-ratio="2.75"></v-img>
           <v-card-title primary-title>
             <div>
               <span class="grey--text">25 Maja 2019</span><br>

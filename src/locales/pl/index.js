@@ -1,7 +1,7 @@
 import auth from './auth'
 import app from './app'
+import newBlogEntry from './newBlogEntry'
 
 export default {
-  auth: auth,
-  app: app
+  auth, app, newBlogEntry
 }

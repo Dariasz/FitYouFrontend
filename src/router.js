@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Dashboard from './views/Dashboard'
 import Auth from './views/Auth'
 import Blog from './views/Blog'
+import NewBlogEntry from './views/NewBlogEntry'
 
 Vue.use(Router)
 
@@ -24,6 +25,11 @@ export default new Router({
       path: '/blog',
       name: 'Blog',
       component: Blog
+    },
+    {
+      path: '/blog/new',
+      name: 'NewBlogEntry',
+      component: NewBlogEntry
     }
   ]
 })
