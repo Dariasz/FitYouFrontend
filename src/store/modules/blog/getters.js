@@ -1,3 +1,3 @@
 export default {
-  entries: state => state.entries
+  entriesList: state => state.entriesList
 }

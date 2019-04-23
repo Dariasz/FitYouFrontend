@@ -24,6 +24,7 @@
 
 <script>
   import Editor from './Editor'
+  import { CREATE_ENTRY } from '../../../../store/modules/blog/action-types'
 
   export default {
     name: 'Form',
@@ -38,8 +39,10 @@
       }
     },
     methods: {
-      saveEntry() {
-        console.log('saved')
+      saveEntry () {
+        this.$store.dispatch(`blog/${CREATE_ENTRY}`, { entry: this.entry }).then(() => {
+          console.log('saved!')
+        })
       },
       updateEntryContent (content) {
         this.entry.content = content

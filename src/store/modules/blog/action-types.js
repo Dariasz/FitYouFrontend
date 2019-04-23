@@ -1,3 +1,3 @@
 export const FETCH_ENTRIES = 'FETCH_ENTRIES'
 export const LOAD_ENTRIES = 'LOAD_ENTRIES'
-
+export const CREATE_ENTRY = 'CREATE_ENTRY'

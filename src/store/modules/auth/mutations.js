@@ -1,4 +1,4 @@
-import { AUTH_LOGOUT, AUTH_REQUEST, AUTH_SUCCESS } from './action-types'
+import { AUTH_LOGOUT, AUTH_REQUEST, AUTH_SUCCESS, REFRESH_TOKEN } from './action-types'
 
 export default {
   [AUTH_REQUEST]: (state) => {
@@ -26,5 +26,14 @@ export default {
     state.user = {}
     state.token = {}
     state.signedIn = false
+  },
+  [REFRESH_TOKEN]: (state, { headers }) => {
+    const newToken = headers['access-token']
+
+    state.token = {
+      accessToken: newToken.length < 1 ? state.token.accessToken : newToken,
+      client: headers.client,
+      uid: headers.uid
+    }
   }
 }

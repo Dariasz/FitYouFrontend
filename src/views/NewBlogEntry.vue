@@ -8,8 +8,8 @@
 </template>
 
 <script>
-  import Header from '../components/NewBlogEntry/Header'
-  import Form from '../components/NewBlogEntry/Form'
+  import Header from '../components/Blog/NewBlogEntry/Header'
+  import Form from '../components/Blog/NewBlogEntry/Form'
 
   export default {
     name: 'NewBlogEntry',

@@ -14,6 +14,8 @@ import VueI18n from 'vue-i18n'
 import DefaultLayout from './layouts/DefaultLayout'
 import NoToolbarLayout from './layouts/NoToolbarLayout'
 
+import interceptorsSetup from './helpers/interceptors'
+
 Vue.config.productionTip = false
 Vue.use(VeeValidate)
 Validator.localize('pl', pl)
@@ -23,6 +25,8 @@ Vue.use(CKEditor)
 
 Vue.component('default-layout', DefaultLayout)
 Vue.component('no-toolbar-layout', NoToolbarLayout)
+
+interceptorsSetup()
 
 const i18n = new VueI18n({
   locale: 'pl',

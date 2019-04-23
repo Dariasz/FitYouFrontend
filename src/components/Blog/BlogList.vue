@@ -1,13 +1,13 @@
 <template>
   <v-container grid-list-xl>
     <v-layout row wrap>
-      <v-flex xs12 sm6 v-for="card in cards" :key="card.title">
+      <v-flex xs12 sm6 v-for="entry in entries" :key="entry.id">
         <v-card hover>
           <v-img src="https://cdn.vuetifyjs.com/images/cards/desert.jpg" aspect-ratio="2.75"></v-img>
           <v-card-title primary-title>
             <div>
               <span class="grey--text">25 Maja 2019</span><br>
-              <div class="headline">Jak robić nogi żeby nie umrzeć</div>
+              <div class="headline">{{entry.title}}</div>
               <span class="grey--text">Lorem lipsum</span>
             </div>
           </v-card-title>
@@ -29,12 +29,22 @@
 </template>
 
 <script>
+  import { mapActions, mapGetters } from 'vuex'
+  import { FETCH_ENTRIES } from '../../store/modules/blog/action-types'
+
   export default {
-    data: () => ({
-      cards: [
-        { title: 'Favorite road trips', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg' },
-        { title: 'Best airlines', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg' }
-      ]
-    })
+    created () {
+      this.fetchEntries()
+    },
+    computed: {
+      ...mapGetters({
+        entries: 'blog/entriesList'
+      })
+    },
+    methods: {
+      ...mapActions({
+        fetchEntries: `blog/${FETCH_ENTRIES}`
+      })
+    }
   }
 </script>
