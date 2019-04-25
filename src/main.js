@@ -5,6 +5,8 @@ import router from './router'
 import store from './store/index'
 import messages from './locales/index'
 import CKEditor from '@ckeditor/ckeditor5-vue'
+import moment from 'moment'
+import VueMoment from 'vue-moment'
 
 import VeeValidate, { Validator } from 'vee-validate'
 import pl from 'vee-validate/dist/locale/pl'
@@ -25,6 +27,14 @@ Vue.use(CKEditor)
 
 Vue.component('default-layout', DefaultLayout)
 Vue.component('no-toolbar-layout', NoToolbarLayout)
+
+moment.locale('pl')
+
+Vue.use(VueMoment,
+  {
+    moment
+  }
+)
 
 interceptorsSetup()
 

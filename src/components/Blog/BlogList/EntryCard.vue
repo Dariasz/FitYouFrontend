@@ -1,12 +1,12 @@
 <template>
   <v-flex xs12 sm6>
     <v-card hover>
-      <v-img src="https://cdn.vuetifyjs.com/images/cards/desert.jpg" aspect-ratio="2.75"></v-img>
+      <v-img :src="backgroundImageSrc" aspect-ratio="2.75"></v-img>
       <v-card-title primary-title>
         <div>
-          <span class="grey--text">25 Maja 2019</span><br>
+          <span class="grey--text">{{createdAt}}</span><br>
           <div class="headline">{{entry.title}}</div>
-          <span class="grey--text">Lorem lipsum</span>
+          <span class="grey--text">{{entry.description}}</span>
         </div>
       </v-card-title>
 
@@ -27,6 +27,14 @@
 <script>
   export default {
     name: 'EntryCard',
-    props: ['entry']
+    props: ['entry'],
+    computed: {
+      createdAt() {
+        return this.$moment(this.entry.createdAt).format('LL')
+      },
+      backgroundImageSrc() {
+        return this.entry.backgroundImageSrc || "https://cdn.vuetifyjs.com/images/cards/desert.jpg"
+      }
+    }
   }
 </script>
