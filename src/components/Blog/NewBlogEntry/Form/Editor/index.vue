@@ -22,9 +22,9 @@
         editor: new Editor({
           extensions: extensions,
           content: this.content,
-          onUpdate: ({ getJSON }) => {
-            const json = getJSON()
-            this.updateContent(json)
+          onUpdate: ({ getHTML }) => {
+            const html = getHTML()
+            this.updateContent(html)
           }
         })
       }

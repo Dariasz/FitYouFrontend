@@ -11,7 +11,14 @@
       </v-card-title>
 
       <v-card-actions>
-        <v-btn color="success" flat outline dark>Read more</v-btn>
+        <v-btn
+          color="success"
+          flat
+          outline
+          dark
+          @click="linkToShow"
+        >Read more
+        </v-btn>
         <v-spacer></v-spacer>
         <v-btn icon>
           <v-icon color="red">favorite</v-icon>
@@ -33,7 +40,12 @@
         return this.$moment(this.entry.createdAt).format('LL')
       },
       backgroundImageSrc() {
-        return this.entry.backgroundImageSrc || "https://cdn.vuetifyjs.com/images/cards/desert.jpg"
+        return this.entry.backgroundImageSrc || 'https://cdn.vuetifyjs.com/images/cards/desert.jpg'
+      }
+    },
+    methods: {
+      linkToShow() {
+        this.$router.push({ name: 'ShowBlogEntry', params: { id: this.entry.id } })
       }
     }
   }

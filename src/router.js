@@ -4,6 +4,7 @@ import Dashboard from './views/Dashboard'
 import Auth from './views/Auth'
 import Blog from './views/Blog'
 import NewBlogEntry from './views/NewBlogEntry'
+import ShowBlogEntry from './views/ShowBlogEntry'
 
 Vue.use(Router)
 
@@ -25,6 +26,11 @@ export default new Router({
       path: '/blog',
       name: 'Blog',
       component: Blog
+    },
+    {
+      path: '/blog/entry/:id',
+      name: 'ShowBlogEntry',
+      component: ShowBlogEntry
     },
     {
       path: '/blog/new',
