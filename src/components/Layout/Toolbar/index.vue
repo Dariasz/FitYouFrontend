@@ -8,6 +8,13 @@
       <v-btn flat color="white" to="/">
         {{$t('app.toolbar.dashboard')}}
       </v-btn>
+    </v-toolbar-items>
+    <v-toolbar-items class="hidden-sm-and-down">
+      <v-btn flat color="white" to="/blog">
+        {{$t('app.toolbar.blog')}}
+      </v-btn>
+    </v-toolbar-items>
+    <v-toolbar-items>
       <user-options-list></user-options-list>
     </v-toolbar-items>
   </v-toolbar>

@@ -4,6 +4,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store/index'
 import messages from './locales/index'
+import CKEditor from '@ckeditor/ckeditor5-vue'
+import moment from 'moment'
+import VueMoment from 'vue-moment'
 
 import VeeValidate, { Validator } from 'vee-validate'
 import pl from 'vee-validate/dist/locale/pl'
@@ -13,12 +16,27 @@ import VueI18n from 'vue-i18n'
 import DefaultLayout from './layouts/DefaultLayout'
 import NoToolbarLayout from './layouts/NoToolbarLayout'
 
+import interceptorsSetup from './helpers/interceptors'
+
 Vue.config.productionTip = false
 Vue.use(VeeValidate)
 Validator.localize('pl', pl)
 Vue.use(VueI18n)
+
+Vue.use(CKEditor)
+
 Vue.component('default-layout', DefaultLayout)
 Vue.component('no-toolbar-layout', NoToolbarLayout)
+
+moment.locale('pl')
+
+Vue.use(VueMoment,
+  {
+    moment
+  }
+)
+
+interceptorsSetup()
 
 const i18n = new VueI18n({
   locale: 'pl',

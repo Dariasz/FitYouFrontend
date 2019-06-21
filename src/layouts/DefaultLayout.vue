@@ -2,7 +2,7 @@
   <div>
     <Toolbar></Toolbar>
     <v-content>
-      <v-layout>
+      <v-layout justify-center>
         <slot></slot>
       </v-layout>
     </v-content>
